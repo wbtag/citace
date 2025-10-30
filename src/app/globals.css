@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-size: 20px;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+.button {
+  background: none;
+  border-style: solid;
+  border-width: 1px;
+  border-color: antiquewhite;
+  border-radius: 10px;
+  display: block;
+  align-items: center;
+  cursor: pointer;
+  padding: 2px 20px;
+  font-size: inherit;
+}
+
+.button-nopad {
+  background: none;
+  border-style: solid;
+  border-width: 1px;
+  border-color: antiquewhite;
+  border-radius: 10px;
+  display: block;
+  align-items: center;
+  cursor: pointer;
+  font-size: inherit;
+}
+
+.button-icon {
+  background: none;
+  border: none;
+  display: block;
+  align-items: center;
+  cursor: pointer;
+}
+
+.box {
+  border: 1px solid white;
+  margin-top: 2%;
+  width: 60%;
+}
+
+.input {
+  background: none;
+  border: 1px solid white;
+  border-radius: 5px;
+  margin-bottom: 3px;
+  margin-right: 3px;
+  font-size: inherit;
+}
+
+.input-thin {
+  width: 50px;
+}
+
+.button-group-active {
+  background: darksalmon;
+}
+
+.button-group-inactive {
+  background: none
+}
+
+.select {
+  font-size: inherit;
+  background: none;
+}
+
+.option {
+  color: black;
+}
+
+.label {
+  width: 120px;
+}
