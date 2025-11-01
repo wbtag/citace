@@ -39,16 +39,19 @@ export default function CitationBox({ citationData, citationBuilder, clear }) {
 
     return (
         <>
-            <div className="flex min-h-20">
-                <div className="citation-offset" />
-                <div className="citation" id='copyArea' dangerouslySetInnerHTML={{ __html: citation }} />
-                <button className='button-icon' onClick={copyCitation}><CopyIcon /></button>
-            </div>
-            <div className="flex w-full justify-center" >
-                <button onClick={clear} className="button justify-content">Vynulovat</button>
-            </div >
-            <div>
-                <div contentEditable id="citationOutput" style={{ position: 'fixed', left: '-10000px', right: '-10000px' }}></div>
+            <div className="pt-5">
+                <div className="flex min-h-20 justify-center gap-x-2">
+                    <div className="citation bg-[rgba(17,24,39,0.5)] border-1 rounded" >
+                        <div className="p-2" id='copyArea' dangerouslySetInnerHTML={{ __html: citation === "" ? "Po zadání údajů se citace zobrazí zde." : citation }} />
+                    </div>
+                    <button className='button-icon' onClick={copyCitation}><CopyIcon /></button>
+                </div>
+                <div className="flex w-full justify-center pt-2" >
+                    <button onClick={clear} className="button justify-content">Vynulovat</button>
+                </div >
+                <div>
+                    <div contentEditable id="citationOutput" style={{ position: 'fixed', left: '-10000px', right: '-10000px' }}></div>
+                </div>
             </div>
         </>
     )

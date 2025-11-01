@@ -36,7 +36,7 @@ export default function Home() {
     <>
       <div className="citationBackground">
         <h1 className="text-center text-2xl py-5">Generátor citací</h1>
-        <div className="flex flex-wrap justify-center mb-2">
+        <div className="flex flex-wrap justify-center mb-2 px-3">
           <Switcher name='book' text='Kniha' />
           <Switcher name='article' text='Článek' />
           <Switcher name='chapter' text='Kapitola' />

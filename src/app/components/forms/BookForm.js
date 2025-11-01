@@ -29,8 +29,7 @@ export function BookForm() {
 
     return (
         <>
-            <div className='flex w-full justify-center'>
-                <div className='form-offset' />
+            <div className='flex w-full min-h-90 justify-center'>
                 <div>
                     <div className="flex flex-wrap my-2 justify-center">
                         {['authors', 'editors'].map((option) => (
@@ -43,19 +42,20 @@ export function BookForm() {
                             </button>
                         ))}
                     </div>
-                    <AuthorForm type='authors' naming={formData.authorType} add={addAuthor} remove={removeAuthor} citationData={citationData} formData={formData} blur={handleAuthorBlur} change={handleAuthorChange} typeChange={handleAuthorTypeChange} checkbox={handleCheckboxChange} />
-                    <div className="pad-vertical" />
-                    <div className="flex">
-                        <label className="label">Název knihy</label>
-                        <input className='input' type="text" name="name" value={formData.name} onBlur={handleBlur} onChange={handleInput} />
-                    </div>
-                    <div className="flex">
-                        <label className="label">Místo vydání</label>
-                        <input className='input' type="text" name="placeOfPublication" value={formData.placeOfPublication} onBlur={handleBlur} onChange={handleInput} />
-                    </div>
-                    <div className="flex">
-                        <label className="label">Rok vydání</label>
-                        <input className='input' type="text" name="yearOfPublication" value={formData.yearOfPublication} onBlur={handleBlur} onChange={handleInput} />
+                    <div className="pl-5 md:pl-0" >
+                        <AuthorForm type='authors' naming={formData.authorType} add={addAuthor} remove={removeAuthor} citationData={citationData} formData={formData} blur={handleAuthorBlur} change={handleAuthorChange} typeChange={handleAuthorTypeChange} checkbox={handleCheckboxChange} />
+                        <div className="flex">
+                            <label className="label">Název knihy</label>
+                            <input className='input' type="text" name="name" value={formData.name} onBlur={handleBlur} onChange={handleInput} />
+                        </div>
+                        <div className="flex">
+                            <label className="label">Místo vydání</label>
+                            <input className='input' type="text" name="placeOfPublication" value={formData.placeOfPublication} onBlur={handleBlur} onChange={handleInput} />
+                        </div>
+                        <div className="flex">
+                            <label className="label">Rok vydání</label>
+                            <input className='input' type="text" name="yearOfPublication" value={formData.yearOfPublication} onBlur={handleBlur} onChange={handleInput} />
+                        </div>
                     </div>
                 </div>
             </div>
