@@ -17,7 +17,7 @@ export class Catalogue extends Base {
                 + `${this.chapterName ? `${this.chapterName}, in: ` : ''}`
         }
         citation += `${editors ? editors : ''}`
-            + `${this.name ? `<i>${this.name}</i> (kat. výst), ` : ''}`
+            + `${this.name ? `<i>${this.name}</i> (kat. výst.), ` : ''}`
             + `${this.placeOfPublication ? `${this.placeOfPublication} ` : ''}`
             + `${this.yearOfPublication ? `${this.yearOfPublication}` : ''}`
         if (this.citeChapter && this.pageFrom && this.pageTo) {
