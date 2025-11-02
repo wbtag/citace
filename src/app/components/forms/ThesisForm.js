@@ -25,7 +25,7 @@ export function ThesisForm() {
 
     return (
         <>
-            <div className='flex w-full min-h-90 justify-center'>
+            <div className='flex w-full min-h-75 pr-5 md:pr-10 justify-center'>
                 <div className="mt-2 md:pl-0">
                     <div className="flex">
                         <label className="label">Autor</label>

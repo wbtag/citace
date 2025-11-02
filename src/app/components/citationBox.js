@@ -40,7 +40,7 @@ export default function CitationBox({ citationData, citationBuilder, clear }) {
     return (
         <>
             <div className="pt-5">
-                <div className="flex min-h-20 justify-center gap-x-2">
+                <div className="flex min-h-20 justify-center gap-x-2 pl-5 md:pl-0">
                     <div className="citation bg-[rgba(17,24,39,0.5)] border-1 rounded" >
                         <div className="p-2" id='copyArea' dangerouslySetInnerHTML={{ __html: citation === "" ? "Po zadání údajů se citace zobrazí zde." : citation }} />
                     </div>
