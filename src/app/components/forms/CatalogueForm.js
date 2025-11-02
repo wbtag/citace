@@ -37,7 +37,7 @@ export function CatalogueForm() {
 
     return (
         <>
-            <div className='flex w-full  min-h-90 justify-center'>
+            <div className='flex w-full min-h-75 justify-center'>
                 <div className="pl-5 md:pl-0">
                     <div className="flex">
                         <input type="checkbox" name='citeChapter' checked={formData.citeChapter} onChange={(e) => handleCheckboxChange(e)} />

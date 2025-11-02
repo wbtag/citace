@@ -35,7 +35,7 @@ export function ChapterForm() {
 
     return (
         <>
-            <div className='flex w-full min-h-90 justify-center'>
+            <div className='flex w-full min-h-75 justify-center'>
                 <div className="mt-2 pl-5 md:pl-0">
                     <AuthorForm type='authors' add={addAuthor} remove={removeAuthor} citationData={citationData} formData={formData} blur={handleAuthorBlur} change={handleAuthorChange} typeChange={handleAuthorTypeChange} checkbox={handleCheckboxChange} />
                     <div className="flex">

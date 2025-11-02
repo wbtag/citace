@@ -29,7 +29,7 @@ export function BookForm() {
 
     return (
         <>
-            <div className='flex w-full min-h-90 justify-center'>
+            <div className='flex w-full min-h-75 justify-center'>
                 <div>
                     <div className="flex flex-wrap my-2 justify-center">
                         {['authors', 'editors'].map((option) => (
