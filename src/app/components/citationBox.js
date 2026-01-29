@@ -3,8 +3,8 @@ import { Book } from "./constructors/Book.js"
 import { Catalogue } from "./constructors/Catalogue.js";
 import { Chapter } from "./constructors/Chapter.js";
 import { Thesis } from "./constructors/Thesis.js";
-import CopyIcon from "./icons/copy.js";
 import './citationBox.css';
+import Image from "next/image.js";
 
 export default function CitationBox({ citationData, citationBuilder, clear }) {
 
@@ -39,12 +39,14 @@ export default function CitationBox({ citationData, citationBuilder, clear }) {
 
     return (
         <>
-            <div className="pt-5">
+            <div className="py-5">
                 <div className="flex min-h-20 justify-center gap-x-2 pl-5 md:pl-0">
                     <div className="citation bg-[rgba(17,24,39,0.5)] border-1 rounded" >
                         <div className="p-2" id='copyArea' dangerouslySetInnerHTML={{ __html: citation === "" ? "Po zadání údajů se citace zobrazí zde." : citation }} />
                     </div>
-                    <button className='button-icon' onClick={copyCitation}><CopyIcon /></button>
+                    <button className='button-icon' onClick={copyCitation}>
+                        <Image src="/icons/copy.svg" alt="" width={20} height={20} />
+                    </button>
                 </div>
                 <div className="flex w-full justify-center pt-2" >
                     <button onClick={clear} className="button justify-content">Vynulovat</button>

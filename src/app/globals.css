@@ -7,8 +7,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #05002d;
+    --foreground: antiquewhite;
   }
 }
 
@@ -81,36 +81,11 @@ a {
   width: 60%;
 }
 
-.input {
-  background: none;
-  border: 1px solid white;
-  border-radius: 5px;
-  margin-bottom: 3px;
-  margin-right: 3px;
-  font-size: inherit;
-}
-
-.input-thin {
-  width: 50px;
-}
-
 .button-group-active {
-  background: darksalmon;
+  background: antiquewhite;
+  color: #05002d
 }
 
 .button-group-inactive {
   background: none
-}
-
-.select {
-  font-size: inherit;
-  background: none;
-}
-
-.option {
-  color: black;
-}
-
-.label {
-  width: 120px;
 }

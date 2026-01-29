@@ -1,5 +1,6 @@
 import { useStateHandler } from "../stateHandlers";
 import CitationBox from "../citationBox";
+import { Input, Select } from "../formComponents";
 
 export function ThesisForm() {
 
@@ -14,52 +15,38 @@ export function ThesisForm() {
         etAlia: false
     }
 
+    const stateHandler = useStateHandler(initialState);
+
     const {
         citationData,
         clearForm,
-        formData,
-        handleBlur,
-        handleInput,
-        handleSelectChange
-    } = useStateHandler(initialState);
+        formData
+    } = stateHandler;
+
+    const thesisTypes = [
+        { name: "Bakalářská", value: "bakalářská práce" },
+        { name: "Diplomová", value: "diplomová práce" },
+        { name: "Rigorózní", value: "rigorózní práce" },
+        { name: "Disertační", value: "disertační práce" },
+        { name: "Habilitační", value: "habilitační práce" },
+    ];
 
     return (
         <>
-            <div className='flex w-full min-h-75 pr-5 md:pr-10 justify-center'>
-                <div className="mt-2 md:pl-0">
-                    <div className="flex">
-                        <label className="label">Autor</label>
-                        <input className='input' type="text" name="author" value={formData.author} onBlur={handleBlur} onChange={handleInput} />
-                    </div>
-                    <div className="flex">
-                        <label className="label">Název práce</label>
-                        <input className='input' type="text" name="name" value={formData.name} onBlur={handleBlur} onChange={handleInput} />
-                    </div>
-                    <div className="flex pb-1">
-                        <label className="label">Typ práce</label>
-                        <select name="thesisType" className="select" value={formData.thesisType} onChange={handleSelectChange}>
-                            <option className="option" value='bakalářská práce'>Bakalářská</option>
-                            <option className="option" value='diplomová práce'>Diplomová</option>
-                            <option className="option" value='rigorózní práce'>Rigorózní</option>
-                            <option className="option" value='disertační práce'>Disertační</option>
-                            <option className="option" value='habilitační práce'>Habilitační</option>
-                        </select>
-                    </div>
-                    <div className="flex">
-                        <label className="label">Katedra</label>
-                        <input className='input' type="text" name="department" value={formData.department} onBlur={handleBlur} onChange={handleInput} />
-                    </div>
-                    <div className="flex">
-                        <label className="label">Místo vydání</label>
-                        <input className='input' type="text" name="placeOfPublication" value={formData.placeOfPublication} onBlur={handleBlur} onChange={handleInput} />
-                    </div>
-                    <div className="flex">
-                        <label className="label">Rok vydání</label>
-                        <input className='input' type="text" name="yearOfPublication" value={formData.yearOfPublication} onBlur={handleBlur} onChange={handleInput} />
+
+            <div className='flex w-full justify-center'>
+                <div className='pr-6 justify-center mt-5'>
+                    <div className="flex flex-col gap-1">
+                        <Input label="Autor" name="author" handler={stateHandler} />
+                        <Input label="Název práce" name="name" handler={stateHandler} />
+                        <Select label="Typ práce" handler={stateHandler} name="thesisType" options={thesisTypes} />
+                        <Input label="Katedra" name="department" handler={stateHandler} />
+                        <Input label="Místo vydání" name="placeOfPublication" handler={stateHandler} />
+                        <Input label="Rok vydání" name="yearOfPublication" handler={stateHandler} />
                     </div>
                 </div>
             </div>
-            <CitationBox citationData={citationData} citationBuilder='thesis' clear={clearForm} />
+            <CitationBox citationData={formData} citationBuilder='thesis' clear={clearForm} />
         </>
     )
 }
