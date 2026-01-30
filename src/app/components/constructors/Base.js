@@ -22,7 +22,6 @@ export class Base {
             } else {
                 if (this.authors.length === 1) {
                     if (this.authors[0] != '') {
-                        console.log(this.authorType)
                         citation += `${this.authors[0]}${this.authorType === 'editors' ? ' (ed.)' : ''}, `
                     }
                 } else {

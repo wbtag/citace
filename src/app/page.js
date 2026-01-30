@@ -34,7 +34,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="citationBackground">
+      <div className="">
         <h1 className="text-center text-2xl py-5">Generátor citací</h1>
         <div className="flex flex-wrap justify-center mb-2 px-3">
           <Switcher name='book' text='Kniha' />
