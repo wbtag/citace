@@ -1,8 +1,8 @@
 'use client'
-import CitationBox from "../citationBox";
-import { useStateHandler } from "../stateHandlers";
-import { Input } from "../formComponents";
-import AuthorForm from "../authorForm";
+import CitationBox from "../helpers/citationBox";
+import { useStateHandler } from "../helpers/stateHandler";
+import { Input } from "../helpers/formComponents";
+import AuthorForm from "../helpers/authorForm";
 
 export function ChapterForm() {
 
@@ -39,7 +39,8 @@ export function ChapterForm() {
                         <Input label="od" name="pageFrom" handler={stateHandler} width="82" />
                         <Input label="do" name="pageTo" handler={stateHandler} width="82" />
                     </div>
-                    <Input label="Název knihy" name="name" handler={stateHandler} />
+                    <AuthorForm type="editors" handler={stateHandler} />
+                    <Input label="Název publikace" name="name" handler={stateHandler} />
                     <Input label="Místo vydání" name="placeOfPublication" handler={stateHandler} />
                     <Input label="Rok vydání" name="yearOfPublication" handler={stateHandler} />
                 </div>

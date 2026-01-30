@@ -1,8 +1,8 @@
 'use client'
-import CitationBox from "../citationBox";
-import { useStateHandler } from "../stateHandlers";
-import AuthorForm from "../authorForm";
-import { Input, Toggle } from "../formComponents";
+import CitationBox from "../helpers/citationBox";
+import { useStateHandler } from "../helpers/stateHandler";
+import AuthorForm from "../helpers/authorForm";
+import { Input, Toggle } from "../helpers/formComponents";
 
 export function CatalogueForm() {
 
