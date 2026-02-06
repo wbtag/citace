@@ -11,8 +11,3 @@ The aim of Umělecké citace is to provide students of art history a replacement
 ## Features
 
 In the application, users can generate citations for several publication types, including journal articles, exhibition catalogues, and academic theses. Support for additional publication types is currently being worked on.
-
-## Availability
-
-The application can be accessed on a temporary domain, citace-umeni.azurewebsites.net.
-
