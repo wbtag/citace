@@ -18,8 +18,8 @@ export default function CitationBox({ citationData, citationBuilder, clear }) {
         'catalogueEntry': CatalogueEntry,
         'chapter': Chapter,
         'internetSource': InternetSource,
-        // 'newsArticle': NewsArticle,
-        // 'review': Review,
+        'newsArticle': NewsArticle,
+        'review': Review,
         'thesis': Thesis
     };
 
@@ -48,7 +48,7 @@ export default function CitationBox({ citationData, citationBuilder, clear }) {
         <>
             <div className="py-5">
                 <div className="flex min-h-20 justify-center gap-x-2 pl-5 md:pl-0">
-                    <div className="min-w-[80vw] md:min-w-[50vw] citation bg-[rgba(17,24,39,0.5)] border-1 rounded" >
+                    <div className="w-[80vw] md:w-[50vw] citation bg-[rgba(17,24,39,0.5)] border-1 rounded" >
                         <div className="p-2" id='copyArea' dangerouslySetInnerHTML={{ __html: citation === "" ? "Po zadání údajů se citace zobrazí zde." : citation }} />
                     </div>
                     <button className='button-icon' onClick={copyCitation}>

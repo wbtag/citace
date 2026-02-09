@@ -46,6 +46,18 @@ export const useStateHandler = (initialState) => {
         }));
     };
 
+    const handleArticleArrayItemChange = (e, index) => {
+        e.preventDefault();
+        const { name, value } = e.target;
+        const itemName = name.split('-')[0];
+        const articles = formData.articles;
+        articles[index][itemName] = value;
+        setFormData((prev) => ({
+            ...prev,
+            articles,
+        }));
+    };
+
     // Other
 
     const handleCheckboxChange = (e) => {
@@ -80,6 +92,7 @@ export const useStateHandler = (initialState) => {
         handleArrayItemChange,
         handleAuthorTypeChange,
         handleCheckboxChange,
+        handleArticleArrayItemChange,
         handleInput,
         handleSelectChange,
         removeArrayItem

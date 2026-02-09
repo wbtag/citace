@@ -4,6 +4,10 @@ export class Review extends Base {
 
     constructor(citationData) {
         super(citationData);
+        this.bookPlaceOfPublication = citationData.bookPlaceOfPublication;
+        this.bookYearOfPublication = citationData.bookYearOfPublication;
+        this.yearOfPublication = citationData.yearOfPublication;
+        this.reviewer = citationData.reviewer;
         this.journal = citationData.journal;
         this.volume = citationData.volume;
         this.volumeToRoman = citationData.volumeToRoman;
@@ -12,9 +16,15 @@ export class Review extends Base {
 
     build() {
         let citation = '';
+
+        citation += `${this.reviewer ? `${this.reviewer} (rec.), ` : ''}`
+
         const authors = this.getAuthors();
+
         citation += `${authors ? authors : ''}`
             + `${this.name ? `${this.name}, ` : ''}`
+            + `${this.bookPlaceOfPublication ? `${this.bookPlaceOfPublication}, ` : ''}`
+            + `${this.bookYearOfPublication ? `${this.bookYearOfPublication}, ` : ''}`
             + `${this.journal ? `<i>${this.journal}</i> ` : ''}`
             + `${this.volume ? this.volumeToRoman ? `${Review.toRoman(this.volume)}, ` : `${this.volume}, ` : ''}`
             + `${this.yearOfPublication ? `${this.yearOfPublication}, ` : ''}`

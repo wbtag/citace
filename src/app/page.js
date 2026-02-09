@@ -8,6 +8,7 @@ import { ThesisForm } from './components/forms/ThesisForm';
 import { CatalogueEntryForm } from './components/forms/CatalogueEntryForm';
 import { InternetSourceForm } from './components/forms/InternetSource';
 import { NewsArticleForm } from './components/forms/NewsArticleForm';
+import { ReviewForm } from "./components/forms/ReviewForm";
 
 export default function Home() {
 
@@ -20,7 +21,8 @@ export default function Home() {
     catalogue: CatalogueForm,
     catalogueEntry: CatalogueEntryForm,
     internetSource: InternetSourceForm,
-    // newsArticle: NewsArticleForm,
+    newsArticle: NewsArticleForm,
+    review: ReviewForm,
     thesis: ThesisForm
   }
 
@@ -48,8 +50,8 @@ export default function Home() {
           <Switcher name='catalogue' text='Katalog' />
           <Switcher name='thesis' text='Kvalifikační práce' />
           <Switcher name='catalogueEntry' text='Katalogové heslo' />
-          {/* <Switcher name='newsArticle' text='Novinový článek' /> */}
-          {/* <Switcher name='review' text='Recenze' /> */}
+          <Switcher name='newsArticle' text='Novinový článek' />
+          <Switcher name='review' text='Recenze' />
           <Switcher name='internetSource' text='Internet' />
         </div>
         <FormRenderer style={{ width: '100%', justifyContent: 'center' }} />
