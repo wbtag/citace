@@ -1,11 +1,14 @@
 'use client'
-import './page.css';
 import { useState } from "react";
 import { ArticleForm } from "./components/forms/ArticleForm";
 import { BookForm } from "./components/forms/BookForm";
 import { ChapterForm } from './components/forms/ChapterForm';
 import { CatalogueForm } from './components/forms/CatalogueForm';
 import { ThesisForm } from './components/forms/ThesisForm';
+import { CatalogueEntryForm } from './components/forms/CatalogueEntryForm';
+import { InternetSourceForm } from './components/forms/InternetSource';
+import { NewsArticleForm } from './components/forms/NewsArticleForm';
+import { ReviewForm } from "./components/forms/ReviewForm";
 
 export default function Home() {
 
@@ -16,11 +19,15 @@ export default function Home() {
     book: BookForm,
     chapter: ChapterForm,
     catalogue: CatalogueForm,
+    catalogueEntry: CatalogueEntryForm,
+    internetSource: InternetSourceForm,
+    newsArticle: NewsArticleForm,
+    review: ReviewForm,
     thesis: ThesisForm
   }
 
   const FormRenderer = () => {
-    const FormComponent = formComponents[publicationType] || JournalArticle;
+    const FormComponent = formComponents[publicationType] || ArticleForm;
     return <FormComponent />
   }
 
@@ -34,20 +41,22 @@ export default function Home() {
 
   return (
     <>
-      <div className="citationBackground">
+      <div className="">
         <h1 className="text-center text-2xl py-5">Generátor citací</h1>
-        <div className="flex flex-wrap justify-center mb-2 px-3">
+        <div className="flex flex-wrap justify-center mb-5 px-3 gap-1">
           <Switcher name='book' text='Kniha' />
           <Switcher name='article' text='Článek' />
           <Switcher name='chapter' text='Kapitola' />
           <Switcher name='catalogue' text='Katalog' />
           <Switcher name='thesis' text='Kvalifikační práce' />
-          {/*<button>Katalogové heslo</button>
-          <button>Novinový článek</button>
-          <button>Recenze</button>
-          <button>Internet</button> */}
+          <Switcher name='catalogueEntry' text='Katalogové heslo' />
+          <Switcher name='newsArticle' text='Novinový článek' />
+          <Switcher name='review' text='Recenze' />
+          <Switcher name='internetSource' text='Internet' />
         </div>
-        <FormRenderer style={{width: '100%', justifyContent: 'center'}}/>
+        <div className="ml-4">
+          <FormRenderer style={{ justifyContent: 'center' }} />
+        </div>
       </div>
     </>
   );

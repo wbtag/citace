@@ -1,8 +1,8 @@
 'use client'
-import CitationBox from "../citationBox";
-import { useStateHandler } from "../stateHandlers";
-import AuthorForm from "../authorForm";
-import { useState } from "react";
+import CitationBox from "../helpers/citationBox";
+import { useStateHandler } from "../helpers/stateHandler";
+import AuthorForm from "../helpers/authorForm";
+import { Input, Toggle } from "../helpers/formComponents";
 
 export function CatalogueForm() {
 
@@ -18,64 +18,40 @@ export function CatalogueForm() {
         authorType: 'Autor',
         etAlia: false,
         editorEtAlia: false,
-        citeChapter: true
+        citeChapter: false
     }
 
+    const stateHandler = useStateHandler(initialState);
+
     const {
-        addAuthor,
         citationData,
         clearForm,
         formData,
-        handleAuthorBlur,
-        handleAuthorChange,
-        handleAuthorTypeChange,
-        handleBlur,
-        handleCheckboxChange,
-        handleInput,
-        removeAuthor
-    } = useStateHandler(initialState);
+    } = stateHandler;
 
     return (
         <>
             <div className='flex w-full min-h-75 justify-center'>
-                <div className="pl-5 md:pl-0">
-                    <div className="flex">
-                        <input type="checkbox" name='citeChapter' checked={formData.citeChapter} onChange={(e) => handleCheckboxChange(e)} />
-                        <label>&nbsp;Citovat stať v katalogu</label>
-                    </div>
+                <div className="flex flex-col gap-1">
                     {formData.citeChapter ?
-                        <div>
-                            <AuthorForm type='authors' add={addAuthor} remove={removeAuthor} citationData={citationData} formData={formData} blur={handleAuthorBlur} change={handleAuthorChange} typeChange={handleAuthorTypeChange} checkbox={handleCheckboxChange} />
-                            <div className="flex">
-                                <label className="label">Název kapitoly</label>
-                                <input className='input' type="text" name="chapterName" value={formData.chapterName} onChange={handleInput} onBlur={handleBlur} />
+                        <div className="flex flex-col gap-1 mt-5">
+                            <AuthorForm type="authors" handler={stateHandler} />
+                            <Input label="Název kapitoly" name="chapterName" handler={stateHandler} />
+                            <div className="flex gap-1 items-center">
+                                <p className="text-xs font-semibold">Rozsah stran</p>
+                                <Input label="od" name="pageFrom" handler={stateHandler} width="82" />
+                                <Input label="do" name="pageTo" handler={stateHandler} width="82" />
                             </div>
-                            <div className="flex">
-                                <label className="label">Rozsah stran:</label>
-                                <label>&nbsp;od&nbsp;</label>
-                                <input className='input input-thin' type="text" name="pageFrom" value={formData.pageFrom} onChange={handleInput} onBlur={handleBlur} />
-                                <label>&nbsp;do&nbsp;</label>
-                                <input className='input input-thin' type="text" name="pageTo" value={formData.pageTo} onChange={handleInput} onBlur={handleBlur} />
-                            </div>
-                            <div className="pad-bottom" />
                         </div> : <div />
                     }
-                    <AuthorForm type='editors' add={addAuthor} remove={removeAuthor} citationData={citationData} formData={formData} blur={handleAuthorBlur} change={handleAuthorChange} typeChange={handleAuthorTypeChange} checkbox={handleCheckboxChange} />
-                    <div className="flex">
-                        <label className="label">Název knihy</label>
-                        <input className='input' type="text" name="name" value={formData.name} onChange={handleInput} onBlur={handleBlur} />
-                    </div>
-                    <div className="flex">
-                        <label className="label">Místo vydání</label>
-                        <input className='input' type="text" name="placeOfPublication" value={formData.placeOfPublication} onChange={handleInput} onBlur={handleBlur} />
-                    </div>
-                    <div className="flex">
-                        <label className="label">Rok vydání</label>
-                        <input className='input' type="text" name="yearOfPublication" value={formData.yearOfPublication} onChange={handleInput} onBlur={handleBlur} />
-                    </div>
+                    <Toggle label="Citovat stať v katalogu" name="citeChapter" handler={stateHandler} />
+                    <AuthorForm type="editors" handler={stateHandler} />
+                    <Input label="Název knihy" name="name" handler={stateHandler} />
+                    <Input label="Místo vydání" name="placeOfPublication" handler={stateHandler} />
+                    <Input label="Rok vydání" name="yearOfPublication" handler={stateHandler} />
                 </div>
             </div>
-            <CitationBox citationData={citationData} citationBuilder='catalogue' clear={clearForm} />
+            <CitationBox citationData={formData} citationBuilder='catalogue' clear={clearForm} />
         </>
     )
 }
