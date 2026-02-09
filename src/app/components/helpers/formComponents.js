@@ -93,7 +93,7 @@ export function Toggle({ icon, label, name, handler }) {
         <div className="flex flex-row gap-2 items-center">
             {icon ? 
             <Image src={icon} alt="" width={20} height={20} /> :
-            <p className="text-xs font-semibold">{label}</p>
+            <p className="text-xs font-semibold w-[180px]">{label}</p>
             }
             <label className="relative h-8 w-12 cursor-pointer [-webkit-tap-highlight-color:_transparent]">
                 <input className="peer sr-only" name={name} type="checkbox" checked={formData[name]} onChange={(e) => handleCheckboxChange(e)} />

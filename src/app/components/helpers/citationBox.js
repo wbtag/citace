@@ -47,7 +47,7 @@ export default function CitationBox({ citationData, citationBuilder, clear }) {
     return (
         <>
             <div className="py-5">
-                <div className="flex min-h-20 justify-center gap-x-2 pl-5 md:pl-0">
+                <div className="flex min-h-20 justify-center gap-x-2 md:pl-0">
                     <div className="w-[80vw] md:w-[50vw] citation bg-[rgba(17,24,39,0.5)] border-1 rounded" >
                         <div className="p-2" id='copyArea' dangerouslySetInnerHTML={{ __html: citation === "" ? "Po zadání údajů se citace zobrazí zde." : citation }} />
                     </div>
@@ -55,7 +55,7 @@ export default function CitationBox({ citationData, citationBuilder, clear }) {
                         <Image src="/icons/copy.svg" alt="" width={20} height={20} />
                     </button>
                 </div>
-                <div className="flex w-full justify-center pt-2" >
+                <div className="flex justify-center pt-2 mr-4" >
                     <button onClick={clear} className="button justify-content">Vynulovat</button>
                 </div >
                 <div>

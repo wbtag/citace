@@ -32,14 +32,14 @@ export default function AuthorForm({ type, naming, handler }) {
                                             <Image src="/icons/add.svg" name={type} alt="" width={20} height={20} />
                                         </button>
                                     </div> :
-                                    <div />
+                                    <div className="w-[20px]" />
                                 }
                                 {
                                     index != 0 ?
                                         <button type="button" className="text-xl" name={type} onClick={(e) => removeArrayItem(e, index)}>
                                             <Image src="/icons/remove.svg" name={type} alt="" width={20} height={20} />
                                         </button> :
-                                        <div />
+                                        <div className="w-[20px]" />
                                 }
                             </div>
                         </div>
