@@ -1,6 +1,6 @@
-import { useStateHandler } from "../stateHandlers";
-import CitationBox from "../citationBox";
-import { Input, Select } from "../formComponents";
+import { useStateHandler } from "../helpers/stateHandler";
+import CitationBox from "../helpers/citationBox";
+import { Input, Select } from "../helpers/formComponents";
 
 export function ThesisForm() {
 

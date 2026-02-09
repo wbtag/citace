@@ -4,12 +4,10 @@ import Image from "next/image";
 export default function AuthorForm({ type, naming, handler }) {
 
     const {
-        addAuthor,
-        removeAuthor,
-        handleAuthorChange,
-        handleAuthorBlur,
+        addArrayItem,
+        removeArrayItem,
+        handleArrayItemChange,
         formData,
-        citationData,
     } = handler;
 
     naming = naming ? naming : type;
@@ -23,14 +21,14 @@ export default function AuthorForm({ type, naming, handler }) {
                             <div className="stretch">
                             <Label label={naming === 'authors' ? 'Autor' : 'Editor'} />
                             <input
-                                type="text" name={type} value={author} onChange={(e) => handleAuthorChange(e, index)} onBlur={(e) => handleAuthorBlur(e)}
+                                type="text" name={type} value={author} onChange={(e) => handleArrayItemChange(e, index)} onBlur={(e) => handleArrayItemChange(e)}
                                 className="input w-[250px] px-[10px] py-[11px] border-1 rounded-[5px] focus:outline-none placeholder:text-black/25"
                             />
                             </div>
                             <div>
-                                {index === 0 && formData[type].length <= 2 && ((type === 'authors' && !citationData.etAlia) || (type === 'editors' && !citationData.editorEtAlia)) ?
+                                {index === 0 && formData[type].length <= 2 && ((type === 'authors' && !formData.etAlia) || (type === 'editors' && !formData.editorEtAlia)) ?
                                     <div>
-                                        <button className="text-xl" name={type} onClick={(e) => addAuthor(e)}>
+                                        <button className="text-xl" name={type} onClick={(e) => addArrayItem(e)}>
                                             <Image src="/icons/add.svg" name={type} alt="" width={20} height={20} />
                                         </button>
                                     </div> :
@@ -38,7 +36,7 @@ export default function AuthorForm({ type, naming, handler }) {
                                 }
                                 {
                                     index != 0 ?
-                                        <button type="button" className="text-xl" name={type} onClick={(e) => removeAuthor(e, index)}>
+                                        <button type="button" className="text-xl" name={type} onClick={(e) => removeArrayItem(e, index)}>
                                             <Image src="/icons/remove.svg" name={type} alt="" width={20} height={20} />
                                         </button> :
                                         <div />

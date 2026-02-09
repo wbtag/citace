@@ -1,7 +1,7 @@
-import { useStateHandler } from "../stateHandlers";
-import CitationBox from "../citationBox";
-import AuthorForm from "../authorForm";
-import { Input } from "../formComponents";
+import { useStateHandler } from "../helpers/stateHandler";
+import CitationBox from "../helpers/citationBox";
+import AuthorForm from "../helpers/authorForm";
+import { Input } from "../helpers/formComponents";
 
 export function BookForm() {
 

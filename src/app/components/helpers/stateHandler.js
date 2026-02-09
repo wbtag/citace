@@ -2,7 +2,6 @@ import { useState } from "react";
 
 export const useStateHandler = (initialState) => {
 
-    const [citationData, setCitationData] = useState(initialState);
     const [formData, setFormData] = useState(initialState);
 
     // Absolutely generic methods
@@ -15,55 +14,49 @@ export const useStateHandler = (initialState) => {
         }));
     };
 
-    const handleBlur = () => {
-        setCitationData(formData);
-    }
-
     const clearForm = () => {
         setFormData(initialState);
-        setCitationData(initialState);
     }
 
-    // Author handling
+    // Array handling
 
-    const addAuthor = (e) => {
+    const addArrayItem = (e) => {
         const { name } = e.target;
         setFormData((prevState) => ({
             ...prevState,
-            [name]: [...prevState[name], ""],
+            [name]: [...prevState[name], ...initialState[name]],
         }));
     };
 
-    const removeAuthor = (e, index) => {
+    const removeArrayItem = (e, index) => {
         const { name } = e.target;
-        setFormData((prev) => ({
-            ...prev,
-            [name]: prev[name].filter((_, i) => i !== index),
-        }));
-        setCitationData((prev) => ({
-            ...prev,
-            [name]: prev[name].filter((_, i) => i !== index),
-        }));
-    };
-
-    // TODO: generalize name
-    const handleAuthorChange = (e, index) => {
-        const { name, value } = e.target;
-        const updatedAuthors = [...formData[name]];
-        updatedAuthors[index] = value;
-        setFormData((prev) => ({
-            ...prev,
-            [name]: updatedAuthors,
-        }));
-    };
-
-    const handleAuthorBlur = (e) => {
-        const { name } = e.target;
-        setCitationData((prevState) => ({
+        setFormData((prevState) => ({
             ...prevState,
-            [name]: [...formData[name]]
-        }))
-    }
+            [name]: prevState[name].filter((_, i) => i !== index),
+        }));
+    };
+
+    const handleArrayItemChange = (e, index) => {
+        const { name, value } = e.target;
+        const updatedArray = [...formData[name]];
+        updatedArray[index] = value;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: updatedArray,
+        }));
+    };
+
+    const handleArticleArrayItemChange = (e, index) => {
+        e.preventDefault();
+        const { name, value } = e.target;
+        const itemName = name.split('-')[0];
+        const articles = formData.articles;
+        articles[index][itemName] = value;
+        setFormData((prev) => ({
+            ...prev,
+            articles,
+        }));
+    };
 
     // Other
 
@@ -73,18 +66,10 @@ export const useStateHandler = (initialState) => {
             ...prevState,
             [name]: checked,
         }))
-        setCitationData((prevState) => ({
-            ...prevState,
-            [name]: checked,
-        }))
     }
 
     const handleAuthorTypeChange = (e, option) => {
         e.preventDefault();
-        setCitationData((prevState) => ({
-            ...prevState,
-            authorType: option,
-        }));
         setFormData((prevState) => ({
             ...prevState,
             authorType: option,
@@ -98,24 +83,18 @@ export const useStateHandler = (initialState) => {
             ...prevState,
             [name]: value,
         }));
-        setCitationData((prevState) => ({
-            ...prevState,
-            [name]: value,
-        }));
     }
 
     return {
-        addAuthor,
+        addArrayItem,
         clearForm,
-        citationData,
         formData,
-        handleAuthorBlur,
-        handleAuthorChange,
+        handleArrayItemChange,
         handleAuthorTypeChange,
-        handleBlur,
         handleCheckboxChange,
+        handleArticleArrayItemChange,
         handleInput,
         handleSelectChange,
-        removeAuthor
+        removeArrayItem
     }
 }
