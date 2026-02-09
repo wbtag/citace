@@ -23,7 +23,7 @@ export function InternetSourceForm() {
     return (
         <>
             <div className='flex w-full min-h-75 justify-center'>
-                <div className="flex flex-col gap-1" >
+                <div className="flex flex-col gap-1 mt-5" >
                     <AuthorForm type='authors' naming={formData.authorType} handler={stateHandler} />
                     <Input label="Název" name="name" handler={stateHandler} />
                     <Input label="Médium" name="medium" handler={stateHandler} />

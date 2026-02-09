@@ -32,7 +32,7 @@ export function CatalogueEntryForm() {
     return (
         <>
             <div className='flex w-full min-h-75 justify-center'>
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-1 mt-5">
                     <AuthorForm type="authors" handler={stateHandler} />
                     <Input label="Heslo" name="entryName" handler={stateHandler} />
                     <Input label="Číslo v katalogu" name="entryNumber" handler={stateHandler} />
