@@ -18,7 +18,7 @@ export function CatalogueForm() {
         authorType: 'Autor',
         etAlia: false,
         editorEtAlia: false,
-        citeChapter: true
+        citeChapter: false
     }
 
     const stateHandler = useStateHandler(initialState);
@@ -33,9 +33,8 @@ export function CatalogueForm() {
         <>
             <div className='flex w-full min-h-75 justify-center'>
                 <div className="flex flex-col gap-1">
-                    <Toggle label="Citovat stať v katalogu" name="citeChapter" handler={stateHandler} />
                     {formData.citeChapter ?
-                        <div className="flex flex-col gap-1">
+                        <div className="flex flex-col gap-1 mt-5">
                             <AuthorForm type="authors" handler={stateHandler} />
                             <Input label="Název kapitoly" name="chapterName" handler={stateHandler} />
                             <div className="flex gap-1 items-center">
@@ -45,6 +44,7 @@ export function CatalogueForm() {
                             </div>
                         </div> : <div />
                     }
+                    <Toggle label="Citovat stať v katalogu" name="citeChapter" handler={stateHandler} />
                     <AuthorForm type="editors" handler={stateHandler} />
                     <Input label="Název knihy" name="name" handler={stateHandler} />
                     <Input label="Místo vydání" name="placeOfPublication" handler={stateHandler} />

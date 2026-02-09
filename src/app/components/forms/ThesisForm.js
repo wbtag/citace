@@ -34,17 +34,16 @@ export function ThesisForm() {
     return (
         <>
 
-            <div className='flex w-full justify-center'>
-                <div className='pr-6 justify-center mt-5'>
-                    <div className="flex flex-col gap-1">
-                        <Input label="Autor" name="author" handler={stateHandler} />
-                        <Input label="Název práce" name="name" handler={stateHandler} />
-                        <Select label="Typ práce" handler={stateHandler} name="thesisType" options={thesisTypes} />
-                        <Input label="Katedra" name="department" handler={stateHandler} />
-                        <Input label="Místo vydání" name="placeOfPublication" handler={stateHandler} />
-                        <Input label="Rok vydání" name="yearOfPublication" handler={stateHandler} />
-                    </div>
+            <div className='flex w-full justify-center gap-2'>
+                <div className="flex flex-col gap-1 mt-5">
+                    <Input label="Autor" name="author" handler={stateHandler} />
+                    <Input label="Název práce" name="name" handler={stateHandler} />
+                    <Select label="Typ práce" handler={stateHandler} name="thesisType" options={thesisTypes} />
+                    <Input label="Katedra" name="department" handler={stateHandler} />
+                    <Input label="Místo vydání" name="placeOfPublication" handler={stateHandler} />
+                    <Input label="Rok vydání" name="yearOfPublication" handler={stateHandler} />
                 </div>
+                <div className="w-[20px]" />
             </div>
             <CitationBox citationData={formData} citationBuilder='thesis' clear={clearForm} />
         </>

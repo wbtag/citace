@@ -54,7 +54,9 @@ export default function Home() {
           <Switcher name='review' text='Recenze' />
           <Switcher name='internetSource' text='Internet' />
         </div>
-        <FormRenderer style={{ width: '100%', justifyContent: 'center' }} />
+        <div className="ml-4">
+          <FormRenderer style={{ justifyContent: 'center' }} />
+        </div>
       </div>
     </>
   );

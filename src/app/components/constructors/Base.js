@@ -3,7 +3,7 @@ export class Base {
         this.authors = citationData.authors;
         this.name = citationData.name;
         this.etAlia = citationData.etAlia;
-        this.authorType = citationData.authorType;
+        this.citeAsEditor = citationData.citeAsEditor;
         this.placeOfPublication = citationData.placeOfPublication;
         this.yearOfPublication = citationData.yearOfPublication;
         this.pageFrom = citationData.pageFrom;
@@ -18,11 +18,11 @@ export class Base {
             }
             if (this.etAlia && this.authors[0] != '') {
                 citation += `${this.authors[0]} et al.`
-                    + `${this.authorType === 'editors' ? ' (edd.), ' : ', '}`
+                    + `${this.citeAsEditor ? ' (edd.), ' : ', '}`
             } else {
                 if (this.authors.length === 1) {
                     if (this.authors[0] != '') {
-                        citation += `${this.authors[0]}${this.authorType === 'editors' ? ' (ed.)' : ''}, `
+                        citation += `${this.authors[0]}${this.citeAsEditor ? ' (ed.)' : ''}, `
                     }
                 } else {
                     for (const [index, author] of this.authors.entries()) {
@@ -30,7 +30,7 @@ export class Base {
                             if (index != this.authors.length - 1) {
                                 citation += `${author} – `
                             } else {
-                                citation += `${author}${this.authorType === 'editors' ? ' (edd.)' : ''}, `
+                                citation += `${author}${this.citeAsEditor ? ' (edd.)' : ''}, `
                             }
                         }
                     }
