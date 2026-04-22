@@ -50,7 +50,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col items-center">
       <header className="w-full max-w-4xl px-4 pt-10 pb-2 text-center">
-        <h1 className="text-3xl tracking-widest uppercase" style={{ letterSpacing: '0.18em', fontSize: '1.45rem' }}>
+        <h1 className="text-3xl" style={{ fontSize: '1.45rem' }}>
           Generátor citací
         </h1>
         <div className="mt-4 mx-auto w-10 h-px opacity-30" style={{ background: 'var(--accent)' }} />
