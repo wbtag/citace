@@ -9,22 +9,18 @@ export function Input({ label, handler, type, name, value, width }) {
     } = handler;
 
     return (
-        <>
-            <div className="flex flex-col w-fit relative">
-                <Label label={label} />
-                <input
-                    type={type ? type : "text"}
-                    name={name}
-                    value={value ?? formData[name]}
-                    onChange={handleInput}
-                    onBlur={handleBlur}
-                    style={{width: width ? `${width}px` : '250px'}}
-                    className={
-                        `input px-[10px] py-[11px] border-1 rounded-[5px] focus:outline-none placeholder:text-black/25`
-                    }
-                />
-            </div>
-        </>
+        <div className="flex flex-col w-fit relative py-1">
+            <Label label={label} />
+            <input
+                type={type ? type : "text"}
+                name={name}
+                value={value ?? formData[name]}
+                onChange={handleInput}
+                onBlur={handleBlur}
+                style={{ width: width ? `${width}px` : '250px' }}
+                className="input px-[10px] py-[11px] border-1 rounded-[7px] focus:outline-none placeholder:text-black/20"
+            />
+        </div>
     )
 }
 
@@ -36,20 +32,17 @@ export function Select({ label, handler, name, options, blankOption, changeHandl
     } = handler;
 
     return (
-        <>
-            <div className="input flex flex-col w-fit static">
+        <div className="flex flex-col w-fit static py-1">
+            <div className="relative">
                 <Label label={label} />
                 <select
                     name={name}
                     value={formData[name]}
                     onChange={changeHandler ?? handleInput}
-                    className="input px-[10px] py-[12px] border-1 border-white rounded-[5px] w-[250px] focus:outline-none placeholder:text-black/25 bg-[#09002f]"
+                    className="input px-[10px] py-[12px] border-1 rounded-[7px] w-[250px] focus:outline-none cursor-pointer"
+                    style={{ background: 'var(--input-bg)' }}
                 >
-                    {
-                        blankOption ?
-                            <option value=""></option> :
-                            null
-                    }
+                    {blankOption ? <option value=""></option> : null}
                     {
                         typeof options[0] === "object" ?
                             options.map((option) => (
@@ -65,19 +58,13 @@ export function Select({ label, handler, name, options, blankOption, changeHandl
                     }
                 </select>
             </div>
-        </>
+        </div>
     )
 }
 
 export function Label({ label }) {
     return (
-        <>
-            <div>
-                <label
-                    className="absolute text-xs font-semibold ml-[7px] px-[3px]"
-                >{label}</label>
-            </div>
-        </>
+        <label className="field-label">{label}</label>
     )
 }
 
@@ -88,19 +75,22 @@ export function Toggle({ icon, label, name, handler }) {
         handleCheckboxChange
     } = handler;
 
-
     return (
-        <div className="flex flex-row gap-2 items-center">
-            {icon ? 
-            <Image src={icon} alt="" width={20} height={20} /> :
-            <p className="text-xs font-semibold w-[180px]">{label}</p>
+        <div className="flex flex-row gap-2 items-center py-1">
+            {icon ?
+                <Image src={icon} alt="" width={20} height={20} /> :
+                <p className="text-xs font-semibold w-[180px] opacity-80">{label}</p>
             }
-            <label className="relative h-8 w-12 cursor-pointer [-webkit-tap-highlight-color:_transparent]">
-                <input className="peer sr-only" name={name} type="checkbox" checked={formData[name]} onChange={(e) => handleCheckboxChange(e)} />
-                <span className="absolute inset-0 m-auto h-2 rounded-full bg-stone-400"></span>
-                <span className="absolute inset-y-0 start-0 m-auto size-6 rounded-full bg-stone-600 transition-all peer-checked:start-6 peer-checked:[&amp;_>_*]:scale-0">
-                    <span className="absolute inset-0 m-auto size-4 rounded-full bg-stone-300 transition"></span>
-                </span>
+            <label className="relative h-6 w-11 cursor-pointer">
+                <input
+                    className="peer sr-only"
+                    name={name}
+                    type="checkbox"
+                    checked={formData[name]}
+                    onChange={(e) => handleCheckboxChange(e)}
+                />
+                <span className="toggle-track absolute inset-0 m-auto h-full rounded-full"></span>
+                <span className="absolute inset-y-0 start-1 m-auto size-5 rounded-full bg-white shadow-sm transition-all duration-250 peer-checked:start-5" style={{ boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}></span>
             </label>
         </div>
     )

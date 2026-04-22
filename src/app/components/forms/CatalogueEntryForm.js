@@ -37,7 +37,7 @@ export function CatalogueEntryForm() {
                     <Input label="Heslo" name="entryName" handler={stateHandler} />
                     <Input label="Číslo v katalogu" name="entryNumber" handler={stateHandler} />
                     <div className="flex gap-1 items-center">
-                        <p className="text-xs font-semibold">Rozsah stran</p>
+                        <p className="text-xs font-semibold opacity-80">Rozsah stran</p>
                         <Input label="od" name="pageFrom" handler={stateHandler} width="82" />
                         <Input label="do" name="pageTo" handler={stateHandler} width="82" />
                     </div>

@@ -33,35 +33,49 @@ export default function CitationBox({ citationData, citationBuilder, clear }) {
         document.execCommand("selectAll");
         document.execCommand("copy");
         if (window.getSelection) {
-            if (window.getSelection().empty) {  // Chrome
+            if (window.getSelection().empty) {
                 window.getSelection().empty();
-            } else if (window.getSelection().removeAllRanges) {  // Firefox
+            } else if (window.getSelection().removeAllRanges) {
                 window.getSelection().removeAllRanges();
             }
-        } else if (document.selection) {  // IE?
+        } else if (document.selection) {
             document.selection.empty();
         }
         copyArea.blur();
     }
 
+    const isEmpty = citation === "";
+
     return (
-        <>
-            <div className="py-5">
-                <div className="flex min-h-20 justify-center gap-x-2 md:pl-0">
-                    <div className="w-[80vw] md:w-[50vw] citation bg-[rgba(17,24,39,0.5)] border-1 rounded" >
-                        <div className="p-2" id='copyArea' dangerouslySetInnerHTML={{ __html: citation === "" ? "Po zadání údajů se citace zobrazí zde." : citation }} />
-                    </div>
-                    <button className='button-icon' onClick={copyCitation}>
-                        <Image src="/icons/copy.svg" alt="" width={20} height={20} />
-                    </button>
+        <div className="py-6">
+            <div className="flex min-h-20 justify-center gap-x-3 md:pl-0 px-4">
+                <div className={`w-[80vw] md:w-[50vw] citation-glass ${isEmpty ? 'opacity-50' : ''} transition-opacity duration-300`}>
+                    <div
+                        className="p-4 text-sm leading-relaxed"
+                        id='copyArea'
+                        dangerouslySetInnerHTML={{
+                            __html: isEmpty
+                                ? '<span style="opacity:0.4; font-style:italic">Po zadání údajů se citace zobrazí zde.</span>'
+                                : citation
+                        }}
+                    />
                 </div>
-                <div className="flex justify-center pt-2 mr-4" >
-                    <button onClick={clear} className="button justify-content">Vynulovat</button>
-                </div >
-                <div>
-                    <div contentEditable id="citationOutput" style={{ position: 'fixed', left: '-10000px', right: '-10000px' }}></div>
-                </div>
+                <button
+                    className='button-icon self-start mt-1'
+                    onClick={copyCitation}
+                    title="Kopírovat citaci"
+                >
+                    <Image src="/icons/copy.svg" alt="Kopírovat" width={18} height={18} />
+                </button>
             </div>
-        </>
+            <div className="flex justify-center pt-3">
+                <button onClick={clear} className="button" style={{ fontSize: '0.8rem', opacity: 0.7 }}>
+                    Vynulovat
+                </button>
+            </div>
+            <div>
+                <div contentEditable id="citationOutput" style={{ position: 'fixed', left: '-10000px', right: '-10000px', color: 'black' }}></div>
+            </div>
+        </div>
     )
 }
