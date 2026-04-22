@@ -59,34 +59,34 @@ function Article({ handler }) {
                     {formData.articles.map((article, index) => (
                         <div key={index} className="flex flex-row gap-2 items-center">
                             <div className="flex flex-col items-center gap-1">
-                                <div className="flex flex-row">
+                                <div className="flex flex-col w-fit relative py-1">
                                     <Label label="Číslo" />
                                     <input
                                         type="issue" name={`issue-${index}`} value={formData.articles[index].issue} onChange={(e) => handleArticleArrayItemChange(e, index)}
-                                        className="input w-[250px] px-[10px] py-[11px] border-1 rounded-[5px] focus:outline-none placeholder:text-black/25"
+                                        className="input w-[250px] px-[10px] py-[11px] border-1 rounded-[7px] focus:outline-none placeholder:text-black/20"
                                     />
                                 </div>
-                                <div className="flex flex-row">
+                                <div className="flex flex-col w-fit relative py-1">
                                     <Label label="Datum vydání" />
                                     <input
                                         type="text" name={`date-${index}`} value={formData.articles[index].date} onChange={(e) => handleArticleArrayItemChange(e, index)}
-                                        className="input w-[250px] px-[10px] py-[11px] border-1 rounded-[5px] focus:outline-none placeholder:text-black/25"
+                                        className="input w-[250px] px-[10px] py-[11px] border-1 rounded-[7px] focus:outline-none placeholder:text-black/20"
                                     />
                                 </div>
                                 <div className="flex flex-row gap-1 items-center">
                                     <p className="text-xs font-semibold">Rozsah stran</p>
-                                    <div className="flex flex-col w-fit relative">
+                                    <div className="flex flex-col w-fit relative py-1">
                                         <Label label="od" />
                                         <input
                                             type="pageFrom" name={`pageFrom-${index}`} value={formData.articles[index].pageFrom} onChange={(e) => handleArticleArrayItemChange(e, index)}
-                                            className="input px-[10px] py-[11px] border-1 rounded-[5px] focus:outline-none placeholder:text-black/25 w-[82px]"
+                                            className="input px-[10px] py-[11px] border-1 rounded-[7px] focus:outline-none placeholder:text-black/20 w-[82px]"
                                         />
                                     </div>
-                                    <div className="flex flex-col w-fit relative">
+                                    <div className="flex flex-col w-fit relative py-1">
                                         <Label label="do" />
                                         <input
                                             type="pageTo" name={`pageTo-${index}`} value={formData.articles[index].pageTo} onChange={(e) => handleArticleArrayItemChange(e, index)}
-                                            className="input px-[10px] py-[11px] border-1 rounded-[5px] focus:outline-none placeholder:text-black/25 w-[82px]"
+                                            className="input px-[10px] py-[11px] border-1 rounded-[7px] focus:outline-none placeholder:text-black/20 w-[82px]"
                                         />
                                     </div>
                                 </div>
@@ -97,15 +97,15 @@ function Article({ handler }) {
                                         {
                                             index === 0 && formData.articles.length <= 10 ?
                                                 <div>
-                                                    <button className="text-xl" name="articles" onClick={(e) => addArrayItem(e)}>
-                                                        <Image src="/icons/add.svg" name="articles" alt="" width={20} height={20} />
+                                                    <button className="text-xl opacity-60" name="articles" onClick={(e) => addArrayItem(e)}>
+                                                        <Image src="/icons/add.svg" name="articles" alt="" width={20} height={20}/>
                                                     </button>
                                                 </div> :
                                                 <div />
                                         }
                                         {
                                             index != 0 ?
-                                                <button type="button" className="text-xl" name="articles" onClick={(e) => removeArrayItem(e, index)}>
+                                                <button type="button" className="opacity-60" name="articles" onClick={(e) => removeArrayItem(e, index)}>
                                                     <Image src="/icons/remove.svg" name="articles" alt="" width={20} height={20} />
                                                 </button> :
                                                 <div />

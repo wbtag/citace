@@ -3,12 +3,26 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --accent: #171717;
+  --border: rgba(23, 23, 23, 0.22);
+  --surface: rgba(0, 0, 0, 0.03);
+  --surface-hover: rgba(0, 0, 0, 0.07);
+  --input-bg: rgba(0, 0, 0, 0.02);
+  --label-bg: #ffffff;
+  --shadow-soft: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #05002d;
     --foreground: antiquewhite;
+    --accent: antiquewhite;
+    --border: rgba(250, 235, 215, 0.22);
+    --surface: rgba(255, 255, 255, 0.03);
+    --surface-hover: rgba(255, 255, 255, 0.08);
+    --input-bg: rgba(9, 0, 47, 0.8);
+    --label-bg: #05002d;
+    --shadow-soft: 0 2px 20px rgba(0, 0, 0, 0.4);
   }
 }
 
@@ -29,9 +43,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 a {
   color: inherit;
@@ -39,55 +51,180 @@ a {
 }
 
 @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+  html { color-scheme: dark; }
 }
+
+/* ── Inputs ─────────────────────────────────────── */
+
+.input {
+  background: var(--input-bg);
+  border-color: var(--border) !important;
+  color: var(--foreground);
+  font-size: 0.85rem;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.input:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 2px rgba(250, 235, 215, 0.1);
+  outline: none;
+}
+
+.field-label {
+  position: absolute;
+  top: -0.65em;
+  left: 8px;
+  padding: 0 4px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  background: var(--label-bg);
+  color: var(--foreground);
+  opacity: 0.8;
+  letter-spacing: 0.01em;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+/* ── Buttons ─────────────────────────────────────── */
 
 .button {
   background: none;
-  border-style: solid;
-  border-width: 1px;
-  border-color: antiquewhite;
-  border-radius: 10px;
-  display: block;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: inline-flex;
   align-items: center;
   cursor: pointer;
-  padding: 2px 20px;
+  padding: 5px 18px;
   font-size: inherit;
+  color: var(--foreground);
+  transition: background 160ms ease, border-color 160ms ease, transform 80ms ease, box-shadow 160ms ease;
+  letter-spacing: 0.01em;
+}
+
+.button:hover {
+  background: var(--surface-hover);
+  border-color: var(--accent);
+}
+
+.button:active {
+  transform: translateY(1px);
 }
 
 .button-nopad {
   background: none;
-  border-style: solid;
-  border-width: 1px;
-  border-color: antiquewhite;
-  border-radius: 10px;
-  display: block;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: inline-flex;
   align-items: center;
   cursor: pointer;
   font-size: inherit;
+  color: var(--foreground);
+  transition: background 160ms ease, border-color 160ms ease, transform 80ms ease;
+}
+
+.button-nopad:hover {
+  background: var(--surface-hover);
+  border-color: var(--accent);
 }
 
 .button-icon {
   background: none;
   border: none;
-  display: block;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   cursor: pointer;
+  padding: 7px;
+  border-radius: 7px;
+  opacity: 0.55;
+  transition: background 160ms ease, opacity 160ms ease, transform 80ms ease;
 }
 
-.box {
-  border: 1px solid white;
-  margin-top: 2%;
-  width: 60%;
+.button-icon:hover {
+  background: var(--surface-hover);
+  opacity: 1;
+}
+
+.button-icon:active {
+  transform: scale(0.9);
+}
+
+/* ── Type switcher ───────────────────────────────── */
+
+.type-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+}
+
+.type-switcher .button {
+  border-radius: 7px;
+  font-size: 0.85rem;
+  padding: 4px 14px;
+}
+
+.switcher-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--foreground);
+  opacity: 0.45;
+  padding: 3px 6px;
+  transition: opacity 160ms ease;
+  letter-spacing: 0.01em;
+}
+
+.switcher-btn:hover {
+  opacity: 0.75;
+}
+
+.switcher-btn-active {
+  opacity: 1;
+  border-bottom: 1.5px solid var(--foreground);
 }
 
 .button-group-active {
-  background: antiquewhite;
-  color: #05002d
+  background: antiquewhite !important;
+  color: #05002d !important;
+  border-color: antiquewhite !important;
+  box-shadow: 0 1px 6px rgba(250, 235, 215, 0.25);
 }
 
 .button-group-inactive {
-  background: none
+  background: none;
+  color: var(--foreground);
+}
+
+/* ── Toggle ──────────────────────────────────────── */
+
+.toggle-track {
+  background: var(--border);
+  transition: background-color 250ms;
+}
+
+input:checked + .toggle-track {
+  background: var(--accent);
+}
+
+/* ── Citation box ────────────────────────────────── */
+
+.citation-glass {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: var(--shadow-soft);
+}
+
+/* ── Legacy ──────────────────────────────────────── */
+
+.box {
+  border: 1px solid var(--border);
+  margin-top: 2%;
+  width: 60%;
 }

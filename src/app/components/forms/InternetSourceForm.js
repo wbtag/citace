@@ -10,7 +10,8 @@ export function InternetSourceForm() {
         name: '',
         medium: '',
         link: '',
-        accessedDate: new Date().toISOString().split('T')[0]
+        accessedDate: new Date().toISOString().split('T')[0],
+        etAlia: false
     }
 
     const stateHandler = useStateHandler(initialState);
